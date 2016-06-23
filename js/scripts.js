@@ -10,25 +10,25 @@ var pokemonArrayOverlay = [];
 
 // PokemonAPI
 
-var pokemonIdArray = [1, 4, 7, 50, 74, 112, 141, 149];
-$.each(pokemonIdArray, function (i, id) {
-    var pokemonURL = "http://pokeapi.co/api/v2/pokemon/" + id + "/";
-    var pokemonGalleryItem = "<ul>";
-    $.getJSON(pokemonURL, function (pokemonData) {
-        var pokemonDataOverlay = [pokemonData.name, pokemonData.id];
-        pokemonArrayOverlay.push(pokemonDataOverlay);
-        pokemonGalleryItem = "<li><div class='gallery-image'>";
-        pokemonGalleryItem += "<img src='" + pokemonData.sprites.front_default + "' alt=''>";
-        pokemonGalleryItem += "</div></li>";
-        // console.log(pokemonArrayOverlay[i][0], pokemonArrayOverlay[i][1]);
-        if (pokemonData["types"][1]) {
-            console.log(pokemonData["types"][1]["type"]["name"]);
-        }
-        console.log(pokemonData["types"][0]["type"]["name"]);
-        pokemonGalleryItem += "</ul>";
-        $(".ajax-gallery").append(pokemonGalleryItem);
-    });
-});
+// var pokemonIdArray = [1, 4, 7, 50, 74, 112, 141, 149];
+// $.each(pokemonIdArray, function (i, id) {
+//     var pokemonURL = "https://pokeapi.co/api/v2/pokemon/" + id + "/";
+//     var pokemonGalleryItem = "<ul>";
+//     $.getJSON(pokemonURL, function (pokemonData) {
+//         var pokemonDataOverlay = [pokemonData.name, pokemonData.id];
+//         pokemonArrayOverlay.push(pokemonDataOverlay);
+//         pokemonGalleryItem = "<li><div class='gallery-image'>";
+//         pokemonGalleryItem += "<img src='" + pokemonData.sprites.front_default + "' alt=''>";
+//         pokemonGalleryItem += "</div></li>";
+//         // console.log(pokemonArrayOverlay[i][0], pokemonArrayOverlay[i][1]);
+//         if (pokemonData["types"][1]) {
+//             console.log(pokemonData["types"][1]["type"]["name"]);
+//         }
+//         console.log(pokemonData["types"][0]["type"]["name"]);
+//         pokemonGalleryItem += "</ul>";
+//         $(".ajax-gallery").append(pokemonGalleryItem);
+//     });
+// });
 
 // look in to tiny sort. Gallery items may need to be placed in to a list.
 // create a lightbox. In this lightbox, we'll need a picture of the pokemon, it's name, ID and type(s).
@@ -36,20 +36,19 @@ $.each(pokemonIdArray, function (i, id) {
 // Create an overlay
 var $overlay = $("<div id='overlay'></div>");
 // Inside the overlay will be a container
-var $overlayContainer = $("<div id='overlayContainer'></div>");
 // Inside the container will be the image, which the pokemon's name, ID and type(s)
 var $overlayImage = $("<img id='overlayImage' src='' alt=''/>");
-var $overlayDescriptionDiv = $("<div id='descriptionDiv'></div>");
 var $pokemonName = $("<p id='pokemonName'></p>");
 var $pokemonId = $("<p id='pokemonId'></p>");
 var $pokemonTypes = $("<p id='pokemonTypes'></p>");
 
-$overlayDescriptionDiv.append($pokemonName).append($pokemonId).append($pokemonTypes);
-$overlayContainer.append($overlayImage).append($overlayDescriptionDiv);
-$overlay.append($overlayContainer);
+$overlay.append($overlayImage).append($pokemonName).append($pokemonId).append($pokemonTypes);
 $("body").append($overlay);
 
-$overlayImage.attr("src", "../img/1.png");
+$overlayImage.attr("src", "img/1.png");
+$pokemonName.text("Bulbasaur");
+$pokemonId.text("#1");
+$pokemonTypes.text("1. Grass 2. Poison");
 // CSS for div boxes will be centered,
 // Some pokemon only have one type, form a conditional statement that appropriately displays this.
 // Clicking the overlay will close the overlay.
