@@ -1,0 +1,77 @@
+
+.wrapper {
+  width: 80%;
+  text-align: center;
+  margin: auto;
+  button {
+    width: 30%;
+    padding: 1%;
+    background: none;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    transition: opacity 250ms;
+  }
+  button:focus {
+    box-shadow: none;
+    outline: none;
+  }
+  button:hover {
+    opacity: 0.8;
+  }
+}
+
+#name-button {
+  background: $sexyRed;
+}
+
+#id-button {
+  background: $sexyBrown;
+}
+
+#random-button {
+  background: $sexyPink;
+}
+
+img {
+  width: 28%;
+  margin: 20px 1% 0 1%;
+  border: 2px solid white;
+  box-shadow: 0 0 3px rgba(0,0,0,0.5);
+  transition: opacity 250ms;
+  float: left;
+  @include tablet() {
+    width: 30%;
+    margin: 1.5%;
+    border: 1px solid white;
+  }
+}
+
+#overlay {
+  position: fixed;
+  background: #000000;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+li {
+  list-style: none;
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+  overflow: auto;
+  clear: both;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  margin: 0;
+}
