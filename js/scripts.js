@@ -63,7 +63,7 @@ $.each(starWarsIdArray, function (i, id) {
     $.getJSON(starWarsURL, function(starWarsData) {
         var starWarsDataOverlay = [starWarsData.name, starWarsData.gender];
     })
-})
+});
 
 
 // look in to tiny sort. Gallery items may need to be placed in to a list.
