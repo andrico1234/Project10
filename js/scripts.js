@@ -22,7 +22,28 @@ $overlay.hide();
 
 function closeArrows() {
     $("#left-arrow, #right-arrow").hide();
-};
+}
+
+function showOverlay() {
+    $("#left-arrow, #right-arrow").show();
+    $overlay.show();
+    // clicking an image will bring up the overlay and the arrows.
+}
+
+$(".gallery-image").click(function () {
+    console.log("image click");
+    showOverlay();
+});
+
+//
+// $('body').click(function () {
+//     if ($overlay.show) {
+//         $overlay.hide();
+//         closeArrows();
+//     }
+// });
+
+closeArrows();
 // Ajax Requests
 
 
@@ -39,9 +60,9 @@ $.each(pokemonIdArray, function (i, id) {
     $.getJSON(pokemonURL, function (pokemonData) {
         var pokemonDataOverlay = [pokemonData.name, pokemonData.id];
         pokemonArrayOverlay.push(pokemonDataOverlay);
-        pokemonGalleryItem = "<li><div class='gallery-image'>";
-        pokemonGalleryItem += "<img src='" + pokemonData.sprites.front_default + "' alt=''>";
-        pokemonGalleryItem += "</div></li>";
+        pokemonGalleryItem = "<li>";
+        pokemonGalleryItem += "<img class='gallery-image' src='" + pokemonData.sprites.front_default + "' alt=''/>";
+        pokemonGalleryItem += "</li>";
         // console.log(pokemonArrayOverlay[i][0], pokemonArrayOverlay[i][1]);
         if (pokemonData["types"][1]) {
             console.log(pokemonData["types"][1]["type"]["name"]);
@@ -55,20 +76,25 @@ $.each(pokemonIdArray, function (i, id) {
 var starWarsArrayOverlay = [];
 
 // Star Wars API
-
-var starWarsIdArray = [1, 2, 3, 4, 5, 6];
+var starWarsIdArray = [1, 2, 3, 4, 5, 6, 7];
 $.each(starWarsIdArray, function (i, id) {
-    var starWarsURL = "http://swapi.co/api/people/" + id + "/";
+    var starWarsURL = "https://swapi.co/api/people/" + id + "/";
     var starWarsGalleryItem = "<ul>";
-    $.getJSON(starWarsURL, function(starWarsData) {
+    $.getJSON(starWarsURL, function (starWarsData) {
         var starWarsDataOverlay = [starWarsData.name, starWarsData.gender];
-    })
+        starWarsArrayOverlay.push(starWarsDataOverlay);
+        starWarsGalleryItem = "<li>";
+        starWarsGalleryItem += "<img class='gallery-image' src='img/starwars"+ id +".jpg' alt=''/>";
+        starWarsGalleryItem += "</li>";
+        console.log(starWarsData.name, starWarsData.gender);
+        starWarsGalleryItem += "</ul>";
+        $(".starwars-gallery").append(starWarsGalleryItem);
+    });
 });
 
 
 // look in to tiny sort. Gallery items may need to be placed in to a list.
 // create a lightbox. In this lightbox, we'll need a picture of the pokemon, it's name, ID and type(s).
-
 
 
 // CSS for div boxes will be centered,
@@ -85,5 +111,5 @@ $.each(starWarsIdArray, function (i, id) {
 // Pop-ups contain item details. (Working On)
 // Navigate between popups
 // Items can be sorted
-// More than 1 api
+// More than 1 api (Done)
 // Validate.

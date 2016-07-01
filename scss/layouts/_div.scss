@@ -1,0 +1,21 @@
+.wrapper {
+  width: 80%;
+  text-align: center;
+  margin: auto;
+  button {
+    width: 30%;
+    padding: 1%;
+    background: none;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    transition: opacity 250ms;
+  }
+  button:focus {
+    box-shadow: none;
+    outline: none;
+  }
+  button:hover {
+    opacity: 0.8;
+  }
+}
