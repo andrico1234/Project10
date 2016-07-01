@@ -1,20 +1,43 @@
-.wrapper {
-  width: 80%;
-  text-align: center;
-  margin: auto; }
-  .wrapper button {
-    width: 30%;
-    padding: 1%;
-    background: none;
-    border-radius: 5px;
-    border: none;
-    color: white;
-    transition: opacity 250ms; }
-  .wrapper button:focus {
-    box-shadow: none;
-    outline: none; }
-  .wrapper button:hover {
-    opacity: 0.8; }
+h2 {
+  font-family: 'Roboto', sans-serif;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+  overflow: auto;
+  clear: both; }
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+  margin: 0; }
+
+.ajax-gallery, .starwars-gallery {
+  width: 100%;
+  margin: auto;
+  overflow: hidden;
+  clear: both;
+  padding-top: 10px; }
+
+img {
+  width: 28%;
+  margin: 20px 1% 0 1%;
+  border: 2px solid white;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  transition: opacity 250ms;
+  float: left; }
+  img :hover {
+    cursor: pointer; }
+  @media screen and (min-width: 768px) {
+    img {
+      width: 30%;
+      margin: 1.5%;
+      border: 1px solid white; } }
+
+.gallery-image:hover {
+  cursor: pointer; }
+
+li {
+  list-style: none;
+  width: auto; }
 
 #name-button {
   background: #b75454; }
@@ -24,19 +47,6 @@
 
 #random-button {
   background: #b75486; }
-
-img {
-  width: 28%;
-  margin: 20px 1% 0 1%;
-  border: 2px solid white;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-  transition: opacity 250ms;
-  float: left; }
-  @media screen and (min-width: 768px) {
-    img {
-      width: 30%;
-      margin: 1.5%;
-      border: 1px solid white; } }
 
 #overlay {
   position: fixed;
@@ -61,19 +71,34 @@ img {
   padding: 5px;
   color: white; }
 
-li {
-  list-style: none; }
+#left-arrow {
+  width: 50px;
+  position: fixed;
+  top: 200px;
+  left: 10%; }
 
-h2 {
-  font-family: 'Roboto', sans-serif;
-  border-bottom: 1px solid black;
-  padding-bottom: 10px;
-  overflow: auto;
-  clear: both; }
+#right-arrow {
+  width: 50px;
+  position: fixed;
+  top: 200px;
+  left: 10%; }
 
-p {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 200;
-  margin: 0; }
+.wrapper {
+  width: 80%;
+  text-align: center;
+  margin: auto; }
+  .wrapper button {
+    width: 30%;
+    padding: 1%;
+    background: none;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    transition: opacity 250ms; }
+  .wrapper button:focus {
+    box-shadow: none;
+    outline: none; }
+  .wrapper button:hover {
+    opacity: 0.8; }
 
 /*# sourceMappingURL=application.css.map */
