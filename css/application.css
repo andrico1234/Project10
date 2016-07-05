@@ -71,6 +71,10 @@ li {
   padding: 5px;
   color: white; }
 
+#left-arrow, #right-arrow {
+  cursor: pointer;
+  z-index: 10000; }
+
 #left-arrow {
   width: 50px;
   position: fixed;
@@ -81,7 +85,7 @@ li {
   width: 50px;
   position: fixed;
   top: 200px;
-  left: 10%; }
+  right: 10%; }
 
 .wrapper {
   width: 80%;

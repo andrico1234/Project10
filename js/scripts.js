@@ -3,16 +3,17 @@
  */
 var $overlay = $("<div id='overlay'></div>");
 var $overlayImage = $("<img id='overlayImage' src='' alt=''/>");
-var $pokemonName = $("<p id='pokemonName'></p>");
-var $pokemonId = $("<p id='pokemonId'></p>");
-var $pokemonTypes = $("<p id='pokemonTypes'></p>");
+var $itemName = $("<p id='itemName'></p>");
+var $itemID = $("<p id='itemID'></p>");
+var $itemTypes = $("<p id='itemTypes'></p>");
+var $itemGender = $("<p id='itemGender'></p>");
 
-$overlay.append($overlayImage).append($pokemonName).append($pokemonId).append($pokemonTypes);
+$overlay.append($overlayImage).append($itemName).append($itemID).append($itemTypes).append($itemGender);
 $("body").append($overlay);
-$overlayImage.attr("src", "img/1.png");
-$pokemonName.text("Bulbasaur");
-$pokemonId.text("#1");
-$pokemonTypes.text("1. Grass 2. Poison");
+// $overlayImage.attr("src", "img/1.png");
+// $itemName.text("Bulbasaur");
+// $itemID.text("#1");
+// $itemTypes.text("1. Grass 2. Poison");
 $overlay.hide();
 
 var pokemonArrayOverlay = [];
@@ -51,7 +52,6 @@ $.each(pokemonIdArray, function (i, id) {
         var $pokemonGalleryItem = "<li>";
         $pokemonGalleryItem += "<img class='gallery-image' alt='n/a' src='" + pokemonData.sprites.front_default + "'/>";
         $pokemonGalleryItem += "</li>";
-        // console.log(pokemonArrayOverlay[i][0], pokemonArrayOverlay[i][1]);
         if (pokemonData["types"][1]) {
             console.log(pokemonData["types"][1]["type"]["name"]);
         }
@@ -84,9 +84,16 @@ $overlay.click(function() {
     closeOverlay();
 });
 
-$(".ajax-gallery .gallery-image").click(function() {
+$("body").on('click', '.gallery-image', function() {
     console.log("image clicked");
     showOverlay();
+    var imageUrl = $(this).attr('src'); // This is the link to the image.
+    $overlayImage.attr('src', imageUrl);
+    $itemName.text(itemName);
+    $itemID.text(itemID);
+    $itemTypes.text();
+    $itemGender.text();
+    console.log($(this).attr('src'));
 });
 
 // store each pokemon's data into an array or object?
