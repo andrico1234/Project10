@@ -48,11 +48,6 @@ li {
 #random-button {
   background: #b75486; }
 
-#pokemonName, #pokemonId, #pokemonTypes {
-  clear: both;
-  padding: 5px;
-  color: white; }
-
 .wrapper {
   width: 80%;
   text-align: center;

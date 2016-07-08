@@ -1,45 +1,9 @@
 /**
  * Created by Home on 16/06/2016.
  */
-// var $overlay = $("<div id='overlay'></div>");
-// var $overlayImage = $("<img id='overlayImage' src='' alt=''/>");
-// var $itemName = $("<p id='itemName'></p>");
-// var $itemID = $("<p id='itemID'></p>");
-// var $itemTypes = $("<p id='itemTypes'></p>");
-// var $itemGender = $("<p id='itemGender'></p>");
-//
-// $overlay.append($overlayImage).append($itemName).append($itemID).append($itemTypes).append($itemGender);
-// $("body").append($overlay);
-// $overlayImage.attr("src", "img/1.png");
-// $itemName.text("Bulbasaur");
-// $itemID.text("#1");
-// $itemTypes.text("1. Grass 2. Poison");
-// $overlay.hide();
 
 var pokemonArrayOverlay = [];
 var starWarsArrayOverlay = [];
-
-// function closeArrows() {
-//     $("#left-arrow, #right-arrow").hide();
-// }
-//
-// function showOverlay() {
-//     $("#left-arrow, #right-arrow").show();
-//     $overlay.show();
-//     // clicking an image will bring up the overlay and the arrows.
-// }
-//
-// function closeOverlay() {
-//     closeArrows();
-//     $overlay.hide();
-// }
-//
-// closeArrows();
-// Ajax Requests
-
-
-// put the ids into an array
-// this array will then be cycled through using a for loop to create our initial pokemon database.
 
 // PokemonAPI
 
@@ -51,7 +15,7 @@ $.each(pokemonIdArray, function (i, id) {
         pokemonArrayOverlay.push(pokemonDataOverlay);
         var pokemonType = pokemonData["types"][0]["type"]["name"];
         var $pokemonGalleryItem = "<li class='poke'>";
-        $pokemonGalleryItem += "<a data-lightbox='image-pokemon' data-title='" + pokemonData.name + "</br>" +
+        $pokemonGalleryItem += "<a data-lightbox='image-pokemon' data-name='"+ pokemonData.name +"' data-id='"+ id +"' data-title='" + pokemonData.name + "</br>" +
             pokemonData.id + "</br>" + pokemonType + "' href='" + pokemonData.sprites.front_default + "'>";
         $pokemonGalleryItem += "<img class='gallery-image' alt='n/a' src='" + pokemonData.sprites.front_default + "'/></a>";
         $pokemonGalleryItem += "</li>";
@@ -79,11 +43,52 @@ $.each(starWarsIdArray, function (i, id) {
         $(".starwars-gallery").append(starWarsGalleryItem);
     });
 });
-// look in to tiny sort. Gallery items may need to be placed in to a list.
-// create a lightbox. In this lightbox, we'll need a picture of the pokemon, it's name, ID and type(s).
+
+// Tiny Sort
+
+// when the name button is pressed, use tinysort to alphabetise the items
+$("#name-button").click(function() {
+    tinysort('.ajax-gallery>li',{selector:'a',attr:'data-name'});
+});
+// when the ID button is pressed, use tinysort to sort via data-iid
+$("#id-button").click(function() {
+    tinysort('.ajax-gallery>li',{selector:'a',attr:'data-id'});
+});
 
 
-// Some pokemon only have one type, form a conditional statement that appropriately displays this.
+// function closeArrows() {
+//     $("#left-arrow, #right-arrow").hide();
+// }
+//
+// function showOverlay() {
+//     $("#left-arrow, #right-arrow").show();
+//     $overlay.show();
+//     // clicking an image will bring up the overlay and the arrows.
+// }
+//
+// function closeOverlay() {
+//     closeArrows();
+//     $overlay.hide();
+// }
+//
+// closeArrows();
+// Ajax Requests
+
+// var $overlay = $("<div id='overlay'></div>");
+// var $overlayImage = $("<img id='overlayImage' src='' alt=''/>");
+// var $itemName = $("<p id='itemName'></p>");
+// var $itemID = $("<p id='itemID'></p>");
+// var $itemTypes = $("<p id='itemTypes'></p>");
+// var $itemGender = $("<p id='itemGender'></p>");
+
+// $overlay.append($overlayImage).append($itemName).append($itemID).append($itemTypes).append($itemGender);
+// $("body").append($overlay);
+// $overlayImage.attr("src", "img/1.png");
+// $itemName.text("Bulbasaur");
+// $itemID.text("#1");
+// $itemTypes.text("1. Grass 2. Poison");
+// $overlay.hide();
+
 // $overlay.click(function () {
 //     closeOverlay();
 // });
@@ -108,16 +113,3 @@ $.each(starWarsIdArray, function (i, id) {
 //         console.log("bye!!");
 //     }
 // });
-
-// store each pokemon's data into an array or object?
-// Define an empty array, and push that pokemon's data to the array when during the $.each() function.
-
-// do the exact same for the star wars API.
-
-
-// API provide more than 6 items (Done)
-// Pop-ups contain item details. (Done)
-// Navigate between popups (Done)
-// Items can be sorted
-// More than 1 api (Done)
-// Validate.
